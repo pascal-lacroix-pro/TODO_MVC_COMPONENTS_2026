@@ -1,0 +1,21 @@
+Tout dans main.js 
+
+	class DB (méthodes statiques)
+		- setApiUrl -> this.apiUrl
+		- findAll async qui return le json
+
+	class Todo
+		- constructor
+			 - id, content, completed, createdAt
+
+	class TodoList 
+		- constructor (data)
+			- this.domEl    querySelector
+			- this.todos []
+			- this.loadTodos -> map des Todo
+		- loadTodos qui est async et qui récupère le findAll
+		  + console.table
+
+	new TodoList 
+		-> el
+		-> apiURL
