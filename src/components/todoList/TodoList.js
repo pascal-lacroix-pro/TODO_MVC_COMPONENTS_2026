@@ -17,4 +17,23 @@ export default class TodoList {
     await this.loadTodos();
     this.domEl.innerHTML = getTemplate(this);
   }
+
+  storeInArray(todo) {
+    this.todos.push(new Todo(todo));
+  }
+
+  storeInDOM(data) {
+    const newTodo = document.createElement("div");
+    this.domEl.querySelector(".todo-list").prepend(newTodo);
+    newTodo.outerHTML = this.todos
+      .filter((todo) => todo.id == data.id)[0]
+      .render();
+  }
+
+  async store(data) {
+    const newTodo = await DB.store({ content: data, completed: false });
+    console.table(newTodo);
+    this.storeInArray(newTodo);
+    this.storeInDOM(newTodo);
+  }
 }
